@@ -1,0 +1,16 @@
+  [1m[35m (72.1ms)[0m  [1m[35mCREATE DATABASE "wonderful_editor_development" ENCODING = 'unicode'[0m
+  [1m[35m (61.8ms)[0m  [1m[35mCREATE DATABASE "wonderful_editor_test" ENCODING = 'unicode'[0m
+Started GET "/" for 127.0.0.1 at 2024-01-26 06:48:31 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering vendor/bundle/ruby/3.1.0/gems/railties-6.1.7.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered vendor/bundle/ruby/3.1.0/gems/railties-6.1.7.6/lib/rails/templates/rails/welcome/index.html.erb (Duration: 5.3ms | Allocations: 572)
+Completed 200 OK in 24ms (Views: 9.9ms | ActiveRecord: 0.0ms | Allocations: 4375)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-26 06:48:46 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering vendor/bundle/ruby/3.1.0/gems/railties-6.1.7.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered vendor/bundle/ruby/3.1.0/gems/railties-6.1.7.6/lib/rails/templates/rails/welcome/index.html.erb (Duration: 9.1ms | Allocations: 268)
+Completed 200 OK in 14ms (Views: 11.5ms | ActiveRecord: 0.0ms | Allocations: 1123)
+
+
