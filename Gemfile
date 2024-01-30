@@ -33,14 +33,14 @@ gem "devise_token_auth" # 追加
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
+  gem "factory_bot_rails" # 追加
+  gem "faker" # 追加
   gem "pry-byebug" # 追加
   gem "pry-doc" # 追加
   gem "pry-rails" # 追加
+  gem "rspec-rails", "~> 6.1.0" # 追加
   gem "rubocop-rails" # 追加
   gem "rubocop-rspec" # 追加
-  gem 'rspec-rails', '~> 6.1.0' # 追加
-  gem 'factory_bot_rails' # 追加
-  gem 'faker' # 追加
 end
 
 group :development do
