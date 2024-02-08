@@ -31,7 +31,7 @@ RSpec/EmptyLineAfterFinalLet:
 # ヒアドキュメント使うと一瞬で超えるので disable も検討。
 RSpec/ExampleLength:
   # 修正
-  Enable: false
+  Enabled: false
 
 # block の方がテスト対象が
 # * `{}` の前後のスペースと相まって目立つ
