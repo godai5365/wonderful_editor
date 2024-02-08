@@ -1,5 +1,15 @@
 require: "rubocop-rspec"
 
+# 追加
+RSpec/AnyInstance:
+  Enabled: false
+
+# 追加
+# パフォーマンスの問題さえ無ければ 1 example 1 assertion にしておく方が
+# 読みやすいテストになりやすいので、そこはレビューで担保していく必要がある。
+RSpec/MultipleExpectations:
+  Max: 4
+
 # 日本語だと「〜の場合」になるので suffix でないと対応できない
 RSpec/ContextWording:
   Enabled: false
@@ -20,7 +30,8 @@ RSpec/EmptyLineAfterFinalLet:
 # feature spec は exclude でも良いかもしれない。
 # ヒアドキュメント使うと一瞬で超えるので disable も検討。
 RSpec/ExampleLength:
-  Max: 8
+  # 修正
+  Enabled: false
 
 # block の方がテスト対象が
 # * `{}` の前後のスペースと相まって目立つ

@@ -12,6 +12,7 @@ RSpec.describe "Api::V1::Articles" do
       subject
       # res = JSON.parse(response.body)
       res = response.parsed_body
+      # binding.pry
 
       aggregate_failures do
         expect(response).to have_http_status(:ok)
@@ -61,6 +62,62 @@ RSpec.describe "Api::V1::Articles" do
 
       it "記事が見つからない" do
         expect { subject }.to raise_error ActiveRecord::RecordNotFound
+      end
+    end
+  end
+
+  describe "POST /articles" do
+    # subject が叩かれると呼び出されると params をルーティング通りに articles_controller に渡す
+    # params の値は let(:params){ {article: attributes_for(:article)} } で生成される
+    # 渡す時に article という key に値を渡さないといけない
+    subject { post(api_v1_articles_path, params: params) }
+
+    context "適切なパラメータを送信した場合" do
+      let(:params) { { article: attributes_for(:article) } }
+      # let(:params) do
+      #   article(key): attributes_for(:article)
+      # end
+      let(:current_user) { create(:user) }
+
+      # stub
+      # Api::V1::BaseApiController の current_user メソッドが呼び出されたら本来の実装とは異なる後ろの current_user を返す
+      # 後ろの current_user が呼び出されたら let(:current_user) { create(:user) } が呼び出され create される
+      # 今回は before が使われているので it が走る前に処理が行われる
+      # before { allow_any_instance_of(Api::V1::BaseApiController).to receive(:current_user).and_return(current_user) }
+      before do
+        current_user_mock = instance_double(Api::V1::BaseApiController)
+        allow(current_user_mock).to receive(:current_user).and_return(current_user)
+      end
+
+      it "記事のレコードが作成できる" do
+        aggregate_failures do
+          # API を叩いた後の Article の current_user の数が1個にかわったことをテスト
+          # Article と current_userの紐づけが出来ていることと user_id が current_user の id になっていることを意味している
+          expect { subject }.to change { Article.where(user_id: current_user.id).count }.by(1)
+          res = response.parsed_body
+          # res = JSON.parse(response.body)
+
+          # パラメータを送信した直後とレスポンスの整合を確認するテスト
+          expect(res["title"]).to eq params[:article][:title]
+          expect(res["body"]).to eq params[:article][:body]
+
+          # httpsステータスが:ok(200)であることをテスト
+          expect(response).to have_http_status(:ok)
+        end
+      end
+    end
+
+    context "不適切なパラメータを送信した場合" do
+      let(:params) { attributes_for(:article) }
+      let(:current_user) { create(:user) }
+      # before { allow_any_instance_of(Api::V1::BaseApiController).to receive(:current_user).and_return(current_user) }
+      before do
+        current_user_mock = instance_double(Api::V1::BaseApiController)
+        allow(current_user_mock).to receive(:current_user).and_return(current_user)
+      end
+
+      it "エラーする" do
+        expect { subject }.to raise_error(ActionController::ParameterMissing)
       end
     end
   end
