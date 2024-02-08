@@ -8,10 +8,3 @@ inherit_from:
 
 AllCops:
   TargetRubyVersion: 2.7
-
-# RSpecまわりのMetrix制限の緩和
-# 1つのテストケースあたりの行数
-RSpec/ExampleLength:
-  Enabled: true
-  Max: 20 # default: 5
-  CountAsOne: ["array", "hash", "heredoc"]
