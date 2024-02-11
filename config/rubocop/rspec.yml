@@ -1,6 +1,10 @@
 require: "rubocop-rspec"
 
 # 追加
+RSpec/LetSetup:
+  Enabled: false
+
+# 追加
 RSpec/AnyInstance:
   Enabled: false
 

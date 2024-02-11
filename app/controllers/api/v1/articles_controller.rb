@@ -12,10 +12,16 @@ module Api::V1
     end
 
     def create
-      # article_paramsに送信されたパラメータを取得する
+      # 送信されたパラメータを params で取得する
       # そのパラメータとログインユーザーに紐づいた記事を作る
       # articlesは関連するレコードを取得するために記述
       article = current_user.articles.create!(article_params)
+      render json: article, serializer: Api::V1::ArticleSerializer
+    end
+
+    def update
+      article = current_user.articles.find(params[:id])
+      article.update!(article_params)
       render json: article, serializer: Api::V1::ArticleSerializer
     end
 
