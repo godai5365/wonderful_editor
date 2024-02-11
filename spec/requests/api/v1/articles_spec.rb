@@ -152,12 +152,40 @@ RSpec.describe "Api::V1::Articles" do
       end
     end
 
-    context "自分が所持していない記事のレコードを更新しようとするとき" do
+    context "他のユーザーの記事を更新しようとするとき" do
       let(:other_user) { create(:user) }
       let!(:article) { create(:article, user: other_user) }
 
       it "更新できない" do
         expect { subject }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+  end
+
+  describe "DELETE /articles/:id" do
+    subject { delete(api_v1_article_path(article.id)) }
+
+    let(:current_user) { create(:user) }
+    before { allow_any_instance_of(Api::V1::BaseApiController).to receive(:current_user).and_return(current_user) }
+
+    context "ログインユーザーが自身の記事を削除しようとする場合" do
+      let!(:article) { create(:article, user: current_user) }
+      it "削除できる" do
+        # expect{ subject }.to change{ Article.count }.by(-1)
+        expect { subject }.to change { Article.where(user_id: current_user.id).count }.by(-1)
+        expect(response).to have_http_status(:no_content)
+        # expect(response).to have_http_status(204)
+      end
+    end
+
+    context "他のユーザーの記事を削除しようとする場合" do
+      let(:other_user) { create(:user) }
+      let!(:article) { create(:article, user: other_user) }
+
+      it "削除できない" do
+        # エラーが起きていることと変化がないことを確認するテスト
+        expect { subject }.to raise_error(ActiveRecord::RecordNotFound) &
+                              not_change { Article.count }.by(0)
       end
     end
   end
