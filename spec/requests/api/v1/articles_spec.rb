@@ -185,7 +185,7 @@ RSpec.describe "Api::V1::Articles" do
       it "削除できない" do
         # エラーが起きていることと変化がないことを確認するテスト
         expect { subject }.to raise_error(ActiveRecord::RecordNotFound) &
-                              not_change { Article.count }.by(0)
+                              not_change { Article.count }
       end
     end
   end
