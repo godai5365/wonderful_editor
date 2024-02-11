@@ -33,6 +33,7 @@ gem "devise_token_auth" # 追加
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
+  gem "database_cleaner" # 2/11追記
   gem "factory_bot_rails" # 追加
   gem "faker" # 追加
   gem "pry-byebug" # 追加

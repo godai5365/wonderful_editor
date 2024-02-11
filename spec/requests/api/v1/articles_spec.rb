@@ -2,8 +2,12 @@ require "rails_helper"
 
 RSpec.describe "Api::V1::Articles" do
   describe "GET /articles" do
+    # indexメソッドを使用するためのpathを指定
     subject { get(api_v1_articles_path) }
 
+    # 事前評価とも言えるlet!を使用し呼び出される前にarticleを作成する
+    # updated_atをバラバラにすることでJsonで返ってくる値がcontrollerで定義した通りに更新順になる。
+    # また必要な値を作成して返してくれる
     let!(:aaa_article1) { create(:article, updated_at: 1.days.ago) }
     let!(:bbb_article2) { create(:article, updated_at: 2.days.ago) }
     let!(:ccc_article3) { create(:article) }
@@ -13,12 +17,22 @@ RSpec.describe "Api::V1::Articles" do
       # res = JSON.parse(response.body)
       res = response.parsed_body
       # binding.pry
-
       aggregate_failures do
+        # httpsステータスが:ok(200)であることをテスト
         expect(response).to have_http_status(:ok)
+        # expect(response).to have_http_status(200)は上記と同義
+
+        # レスポンスの長さが "3" であることをテスト
         expect(res.length).to eq 3
-        expect(res.map.pluck("id")).to eq [ccc_article3.id, aaa_article1.id, bbb_article2.id]
+
+        # 取得した配列のidがarticle3,article1,article2の順番であることをテスト
+        # expect(res.map {|d| d["id"] }).to eq [ccc_article3.id, aaa_article1.id, bbb_article2.id]
+        expect(res.pluck("id")).to eq [ccc_article3.id, aaa_article1.id, bbb_article2.id]
+
+        # articleのレスポンスのkeyがid,title,updated_at,userであることをテスト
         expect(res[0].keys).to eq ["id", "title", "updated_at", "user"]
+
+        # articleのレスポンスと一生に生成されたuserのkeyがid,name,emailであることをテスト
         expect(res[0]["user"].keys).to eq ["id", "name", "email"]
       end
     end
@@ -118,6 +132,32 @@ RSpec.describe "Api::V1::Articles" do
 
       it "エラーする" do
         expect { subject }.to raise_error(ActionController::ParameterMissing)
+      end
+    end
+  end
+
+  describe "PATCH /articles/:id" do
+    subject { patch(api_v1_article_path(article.id), params: params) }
+
+    let(:params) { { article: attributes_for(:article) } }
+    let(:current_user) { create(:user) }
+    before { allow_any_instance_of(Api::V1::BaseApiController).to receive(:current_user).and_return(current_user) }
+
+    context "ログインユーザーが自身の記事を更新しようとする場合" do
+      let(:article) { create(:article, user: current_user) }
+      it "レコードが更新できる" do
+        expect { subject }.to change { article.reload.title }.from(article.title).to(params[:article][:title]) &
+                              change { article.reload.body }.from(article.body).to(params[:article][:body])
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context "自分が所持していない記事のレコードを更新しようとするとき" do
+      let(:other_user) { create(:user) }
+      let!(:article) { create(:article, user: other_user) }
+
+      it "更新できない" do
+        expect { subject }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
   end

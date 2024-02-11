@@ -17,6 +17,17 @@ RSpec.configure do |config|
   config.define_derived_metadata do |meta| # 追記
     meta[:aggregate_failures] = true unless meta.has_key?(:aggregate_failures)
   end
+  config.before(:suite) do # 2/11追記
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before do # 2/11追記
+    DatabaseCleaner.start
+  end
+
+  config.after do # 2/11追記
+    DatabaseCleaner.clean
+  end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
