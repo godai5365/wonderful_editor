@@ -25,6 +25,11 @@ module Api::V1
       render json: article, serializer: Api::V1::ArticleSerializer
     end
 
+    def destroy
+      article = current_user.articles.find(params[:id])
+      article.destroy!
+    end
+
     private
 
       # Strong Parameters
