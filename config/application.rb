@@ -49,5 +49,6 @@ module WonderfulEditor
     end
 
     config.api_only = true
+    config.middleware.use ActionDispatch::Flash # 追記
   end
 end
