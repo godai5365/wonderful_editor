@@ -21,4 +21,6 @@ class Article < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy # 追記
   has_many :article_likes, dependent: :destroy # 追記
+
+  validates :title, presence: true
 end
