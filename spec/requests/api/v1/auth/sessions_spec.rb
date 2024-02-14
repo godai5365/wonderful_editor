@@ -12,6 +12,7 @@ RSpec.describe "Api::V1::Auth::Sessions" do
       it "ログインできる" do
         subject
         header = response
+
         # ログインする時に必要な情報として以下の3つが挙げられる
         # "access-token","uid","client"が存在することを確認するテスト
         expect(header["access-token"]).to be_present
@@ -63,6 +64,34 @@ RSpec.describe "Api::V1::Auth::Sessions" do
           expect(header["client"]).to be_blank
           expect(response).to have_http_status(:unauthorized) # 401 でも可
         end
+      end
+    end
+  end
+
+  describe "DELETE api/v1/auth/sign_out" do
+    subject { delete(destroy_api_v1_user_session_path, headers: headers) }
+
+    context "正しい情報を送信したユーザーがログアウトしようとする場合" do
+      let(:user) { create(:user) }
+      let!(:headers) { user.create_new_auth_token }
+
+      it "ログアウトできる" do
+        expect { subject }.to change { user.reload.tokens }.from(be_present).to(be_blank)
+        expect(response).to have_http_status(:ok)
+        # expect(user.reload.tokens).to be_blank
+      end
+    end
+
+    context "誤った情報を送信したユーザーがログアウトしようとする場合" do
+      let(:user) { create(:user) }
+      let!(:headers) { { "access-token" => "", "client" => "", "uid" => "" } }
+
+      it "ログアウトできない" do
+        subject
+        expect(response).to have_http_status(:not_found)
+        res = response.parsed_body
+        expect(res["errors"]).to include "User was not found or was not logged in."
+        expect(res["success"]).to be false
       end
     end
   end

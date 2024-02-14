@@ -10681,3 +10681,401 @@ Processing by DeviseTokenAuth::SessionsController#create as HTML
 [active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
 Completed 401 Unauthorized in 351ms (Views: 0.5ms | ActiveRecord: 1.8ms | Allocations: 850)
   [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (2.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "1_hosea.blick@greenholt-kautzer.test"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["uid", "1_hosea.blick@greenholt-kautzer.test"], ["encrypted_password", "$2a$12$atOKBGmthyzUX7lbveQrQuB2fgNCqyyU1Hwt2f2QEM4COX8TdirDq"], ["name", "gxlkxjs617llhsf5f994tua6xvd28s"], ["email", "1_hosea.blick@greenholt-kautzer.test"], ["created_at", "2024-02-14 15:19:33.345351"], ["updated_at", "2024-02-14 15:19:33.345351"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (1.5ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"HAwYf_TBuAb8N_QKdhcEmA\\\":{\\\"token\\\":\\\"$2a$04$TPiM3N/.C3NRnYVMc7j/HuRcrZvPFP4K.p9ibjuQgq/J.rh61PYnG\\\",\\\"expiry\\\":1709133573,\\\"updated_at\\\":\\\"2024-02-14T15:19:33Z\\\"}}\""], ["updated_at", "2024-02-14 15:19:33.354898"], ["id", 14]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started DELETE "/api/v1/auth/sign_out" for 127.0.0.1 at 2024-02-15 00:19:33 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "1_hosea.blick@greenholt-kautzer.test"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", nil], ["updated_at", "2024-02-14 15:19:33.390819"], ["id", 14]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 14ms (Views: 1.4ms | ActiveRecord: 5.5ms | Allocations: 3794)
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (2.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "1_elmo@becker.test"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.9ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["uid", "1_elmo@becker.test"], ["encrypted_password", "$2a$12$fwNWnWXyHL.Oz/C1A8xOCuf22OvUwOaduThnxGYDJwolr2XynjxyO"], ["name", "qdor2q1p8"], ["email", "1_elmo@becker.test"], ["created_at", "2024-02-14 15:27:51.303878"], ["updated_at", "2024-02-14 15:27:51.303878"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/auth/sign_in" for 127.0.0.1 at 2024-02-15 00:27:51 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"name"=>"3yzesyt8fmrposf96uq2y", "email"=>"1_elmo@becker.test", "password"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+[31mUnpermitted parameter: :name[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "1_elmo@becker.test"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :name[0m
+[31mUnpermitted parameter: :name[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (1.5ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Update (1.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"UzBgWQYm-ispu6ias8oqsQ\\\":{\\\"token\\\":\\\"$2a$04$eK.otxbV7K/Z8S4Jr5Vtt.GwgXpmESaIUrQp3SW7IqSuJ.25pnHAK\\\",\\\"expiry\\\":1709134071}}\""], ["updated_at", "2024-02-14 15:27:51.623938"], ["id", 15]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Completed 200 OK in 302ms (Views: 2.4ms | ActiveRecord: 7.5ms | Allocations: 5768)
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (2.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "1_rickey@kshlerin-smitham.example"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.7ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["uid", "1_rickey@kshlerin-smitham.example"], ["encrypted_password", "$2a$12$ZcmHo5ShGC4WZ3bg2M3oYeed4aEmtxbTJHjMaIRFkSJv2hB7iGaoe"], ["name", "ltht082c5en5v9ihmywz"], ["email", "1_rickey@kshlerin-smitham.example"], ["created_at", "2024-02-14 15:30:48.130581"], ["updated_at", "2024-02-14 15:30:48.130581"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (2.8ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"eu3BFjDpKCavAENTbVRhRg\\\":{\\\"token\\\":\\\"$2a$04$IB6vL0Sw5OI4dDk9IPkbYul3rCy.AdOxlWWoqInpR0bNl9sHrNHFW\\\",\\\"expiry\\\":1709134248,\\\"updated_at\\\":\\\"2024-02-14T15:30:48Z\\\"}}\""], ["updated_at", "2024-02-14 15:30:48.137117"], ["id", 16]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started DELETE "/api/v1/auth/sign_out" for 127.0.0.1 at 2024-02-15 00:30:48 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "1_rickey@kshlerin-smitham.example"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", nil], ["updated_at", "2024-02-14 15:30:48.172888"], ["id", 16]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 200 OK in 12ms (Views: 1.2ms | ActiveRecord: 3.9ms | Allocations: 3793)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (4.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "1_jaquelyn@johnson-bartoletti.example"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (2.5ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["uid", "1_jaquelyn@johnson-bartoletti.example"], ["encrypted_password", "$2a$12$eidJnQDN.vVesbbxEGzm6.9rYMYIEQX7nqbeYWU4Z.tSr2dj3TQLq"], ["name", "n8b0hdxi"], ["email", "1_jaquelyn@johnson-bartoletti.example"], ["created_at", "2024-02-14 15:35:47.598686"], ["updated_at", "2024-02-14 15:35:47.598686"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (1.6ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"T473JA2OdjXGQjJAMBkXhg\\\":{\\\"token\\\":\\\"$2a$04$gD3ELBfCQYnlYoR9fALo4eoIVhUMqdZNHuKexp87lIzr4MolbDjSy\\\",\\\"expiry\\\":1709134547,\\\"updated_at\\\":\\\"2024-02-14T15:35:47Z\\\"}}\""], ["updated_at", "2024-02-14 15:35:47.609108"], ["id", 17]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started DELETE "/api/v1/auth/sign_out" for 127.0.0.1 at 2024-02-15 00:35:47 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "1_jaquelyn@johnson-bartoletti.example"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", nil], ["updated_at", "2024-02-14 15:35:47.642173"], ["id", 17]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 11ms (Views: 1.4ms | ActiveRecord: 2.5ms | Allocations: 3642)
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (2.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "1_burton_mills@kshlerin.example"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.3ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["uid", "1_burton_mills@kshlerin.example"], ["encrypted_password", "$2a$12$lnju.TgbIM1m0qY3HtanW.2AvQ/LDe5rxv8CPfgNeoNS10KMMTBne"], ["name", "fqzcykwjf8dubx8unfnvoxn"], ["email", "1_burton_mills@kshlerin.example"], ["created_at", "2024-02-14 15:36:31.209453"], ["updated_at", "2024-02-14 15:36:31.209453"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (1.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"PUgUAyyJQLEZa2_XgO_Beg\\\":{\\\"token\\\":\\\"$2a$04$SG2xVGpToDRrZ88/6jqVvOUOJcriTvEi2jS/YO0ZMKLkMw2q2.dhm\\\",\\\"expiry\\\":1709134591,\\\"updated_at\\\":\\\"2024-02-14T15:36:31Z\\\"}}\""], ["updated_at", "2024-02-14 15:36:31.221430"], ["id", 18]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started DELETE "/api/v1/auth/sign_out" for 127.0.0.1 at 2024-02-15 00:36:31 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "1_burton_mills@kshlerin.example"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", nil], ["updated_at", "2024-02-14 15:36:31.261173"], ["id", 18]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 200 OK in 11ms (Views: 1.1ms | ActiveRecord: 2.5ms | Allocations: 3643)
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (3.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "1_victor@runolfsson-shanahan.test"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["uid", "1_victor@runolfsson-shanahan.test"], ["encrypted_password", "$2a$12$e.l7Cpc43ikO7HaBVfEs/.84sJT0CaGoepsLJl/EYUr2a/KtZkyly"], ["name", "wna056z8hvnw7qrpqlmrfvsc20ow19"], ["email", "1_victor@runolfsson-shanahan.test"], ["created_at", "2024-02-14 15:37:27.661287"], ["updated_at", "2024-02-14 15:37:27.661287"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (1.9ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"1y6MiFG-CtSmhyp31Owcag\\\":{\\\"token\\\":\\\"$2a$04$XmhCdqxyh/vsZX0PJ122Iu0fMJDQjUF7NjtlZKLlXzAY6gGd1.tpW\\\",\\\"expiry\\\":1709134647,\\\"updated_at\\\":\\\"2024-02-14T15:37:27Z\\\"}}\""], ["updated_at", "2024-02-14 15:37:27.667187"], ["id", 19]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+Started DELETE "/api/v1/auth/sign_out" for 127.0.0.1 at 2024-02-15 00:37:27 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "1_victor@runolfsson-shanahan.test"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", nil], ["updated_at", "2024-02-14 15:37:27.703891"], ["id", 19]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 200 OK in 10ms (Views: 1.1ms | ActiveRecord: 3.2ms | Allocations: 3651)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+Started DELETE "/api/v1/auth/sign_out" for 127.0.0.1 at 2024-02-15 00:53:55 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 404 Not Found in 158ms (Views: 1.5ms | ActiveRecord: 0.0ms | Allocations: 283471)
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (5.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "1_denis.schimmel@yundt-hayes.test"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (2.1ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["uid", "1_denis.schimmel@yundt-hayes.test"], ["encrypted_password", "$2a$12$1nQE2hFCpZihxyp7xUPooOYdBO5T3MqZbpLDQBx581sUKwT/KBwBm"], ["name", "1qgq6dxspyz"], ["email", "1_denis.schimmel@yundt-hayes.test"], ["created_at", "2024-02-14 15:54:56.551165"], ["updated_at", "2024-02-14 15:54:56.551165"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+Started DELETE "/api/v1/auth/sign_out" for 127.0.0.1 at 2024-02-15 00:58:27 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 404 Not Found in 147ms (Views: 1.4ms | ActiveRecord: 0.0ms | Allocations: 283465)
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+Started DELETE "/api/v1/auth/sign_out" for 127.0.0.1 at 2024-02-15 00:59:03 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 404 Not Found in 163ms (Views: 1.5ms | ActiveRecord: 0.0ms | Allocations: 283456)
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+Started DELETE "/api/v1/auth/sign_out" for 127.0.0.1 at 2024-02-15 00:59:29 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 404 Not Found in 155ms (Views: 1.4ms | ActiveRecord: 0.0ms | Allocations: 283466)
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (2.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "1_carmina_smith@murphy-huels.example"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["uid", "1_carmina_smith@murphy-huels.example"], ["encrypted_password", "$2a$12$58SbbuEYpYKFx8cDM/L20u3y63PE2vLd8RQiEUnVXSYkF0bkeaDni"], ["name", "fw97j34h0v"], ["email", "1_carmina_smith@murphy-huels.example"], ["created_at", "2024-02-14 16:06:43.259557"], ["updated_at", "2024-02-14 16:06:43.259557"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/auth/sign_in" for 127.0.0.1 at 2024-02-15 01:06:43 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"name"=>"z9kxw8qq5xoh6cb3xv9lca", "email"=>"1_carmina_smith@murphy-huels.example", "password"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+[31mUnpermitted parameter: :name[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "1_carmina_smith@murphy-huels.example"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :name[0m
+[31mUnpermitted parameter: :name[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mUser Update (1.7ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"-WwDaOZx-AkEBAmdWSdC_w\\\":{\\\"token\\\":\\\"$2a$04$cRPRiuPxI7Ep6qyuyHIwC.ER6ohayjK47.4a7l1uQqF28KpgH1jWG\\\",\\\"expiry\\\":1709136403}}\""], ["updated_at", "2024-02-14 16:06:43.583290"], ["id", 21]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+Completed 200 OK in 307ms (Views: 1.1ms | ActiveRecord: 8.6ms | Allocations: 5771)
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "2_candy@wintheiser.test"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["uid", "2_candy@wintheiser.test"], ["encrypted_password", "$2a$12$qel9PAtFWRXXPKPtxoz8muYMcy2bBKzztQhtsZy4HUfG7ZwLBeN.e"], ["name", "5008havmxh"], ["email", "2_candy@wintheiser.test"], ["created_at", "2024-02-14 16:06:43.888005"], ["updated_at", "2024-02-14 16:06:43.888005"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/auth/sign_in" for 127.0.0.1 at 2024-02-15 01:06:43 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"name"=>"tbl7ujuuiigrkkm3ganj5rslhxgo", "email"=>"foo", "password"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+[31mUnpermitted parameter: :name[0m
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "foo"], ["provider", "email"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 401 Unauthorized in 3ms (Views: 0.2ms | ActiveRecord: 1.5ms | Allocations: 816)
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "3_marlo@stoltenberg.example"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["uid", "3_marlo@stoltenberg.example"], ["encrypted_password", "$2a$12$9DZ.8b0S1QTa2vNBu67gRO1wUbkzYThYoKpohiE7eHvwG17mvuzzW"], ["name", "xveqqssulrta9ncp9"], ["email", "3_marlo@stoltenberg.example"], ["created_at", "2024-02-14 16:06:44.191189"], ["updated_at", "2024-02-14 16:06:44.191189"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/auth/sign_in" for 127.0.0.1 at 2024-02-15 01:06:44 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"name"=>"l2iqgc90cdsx1lh64", "email"=>"3_marlo@stoltenberg.example", "password"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+[31mUnpermitted parameter: :name[0m
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "3_marlo@stoltenberg.example"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :name[0m
+[31mUnpermitted parameter: :name[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 401 Unauthorized in 290ms (Views: 0.4ms | ActiveRecord: 1.3ms | Allocations: 850)
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "4_danilo.heathcote@gutkowski-ziemann.test"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["uid", "4_danilo.heathcote@gutkowski-ziemann.test"], ["encrypted_password", "$2a$12$e50VLcNAMDzsDNJ8KqApi.1YGi5K8TywiQ0BT5nHNw8suoXj/NmKm"], ["name", "rcn377g3vsahlm90xka5fv0wttk"], ["email", "4_danilo.heathcote@gutkowski-ziemann.test"], ["created_at", "2024-02-14 16:06:44.786167"], ["updated_at", "2024-02-14 16:06:44.786167"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (1.6ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"k-0rFAMax_E0iDBrKon8mg\\\":{\\\"token\\\":\\\"$2a$04$eevFp1eaCNnWOFhxhd6ihefJ9nX9UTj3HDCe5x7cBszRUsMDVmczG\\\",\\\"expiry\\\":1709136404,\\\"updated_at\\\":\\\"2024-02-14T16:06:44Z\\\"}}\""], ["updated_at", "2024-02-14 16:06:44.790797"], ["id", 24]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+Started DELETE "/api/v1/auth/sign_out" for 127.0.0.1 at 2024-02-15 01:06:44 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "4_danilo.heathcote@gutkowski-ziemann.test"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (1.7ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", nil], ["updated_at", "2024-02-14 16:06:44.808877"], ["id", 24]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 4.9ms | Allocations: 1548)
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+Started DELETE "/api/v1/auth/sign_out" for 127.0.0.1 at 2024-02-15 01:06:44 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 368)
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "1_venice.willms@zulauf-toy.test"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["uid", "1_venice.willms@zulauf-toy.test"], ["encrypted_password", "$2a$12$YooWKnz.aZZ32in2gTsXgO8migNU5KToUSQXLVfHDB9y3lLV6chvC"], ["name", "bb97"], ["email", "1_venice.willms@zulauf-toy.test"], ["created_at", "2024-02-14 16:07:04.215845"], ["updated_at", "2024-02-14 16:07:04.215845"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/auth/sign_in" for 127.0.0.1 at 2024-02-15 01:07:04 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"name"=>"81kjnvtduhbwcs3kntare", "email"=>"1_venice.willms@zulauf-toy.test", "password"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+[31mUnpermitted parameter: :name[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "1_venice.willms@zulauf-toy.test"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :name[0m
+[31mUnpermitted parameter: :name[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (1.4ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[36mUser Update (1.2ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"6L0WLcxbIaVe6nhhLrO1HA\\\":{\\\"token\\\":\\\"$2a$04$b9r0sSeWTKUsOmCLttxJV.u/SMwy60fclq8ZZNB6X/PbBjkzpIxSy\\\",\\\"expiry\\\":1709136424}}\""], ["updated_at", "2024-02-14 16:07:04.538743"], ["id", 25]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+Completed 200 OK in 306ms (Views: 1.8ms | ActiveRecord: 6.5ms | Allocations: 5771)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (9.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "2_chiquita@zulauf.example"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (2.6ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["uid", "2_chiquita@zulauf.example"], ["encrypted_password", "$2a$12$KknabGoSiHnuzJJunn.zWeph8MK9SrPhMYSEKBEX66dXgSyR7GW7a"], ["name", "39a4d1uat9oi"], ["email", "2_chiquita@zulauf.example"], ["created_at", "2024-02-14 16:07:04.899366"], ["updated_at", "2024-02-14 16:07:04.899366"]]
+  [1m[36mTRANSACTION (8.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/auth/sign_in" for 127.0.0.1 at 2024-02-15 01:07:04 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"name"=>"czziqpf62zskkdfr", "email"=>"foo", "password"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+[31mUnpermitted parameter: :name[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "foo"], ["provider", "email"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 4ms (Views: 0.4ms | ActiveRecord: 1.9ms | Allocations: 817)
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "3_fidel_hettinger@quitzon.example"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["uid", "3_fidel_hettinger@quitzon.example"], ["encrypted_password", "$2a$12$G9V95Z3P253DT0vI71RqOu/rRKJso.U4JmwA/aN3UYPGKMSnrODVm"], ["name", "t"], ["email", "3_fidel_hettinger@quitzon.example"], ["created_at", "2024-02-14 16:07:05.248258"], ["updated_at", "2024-02-14 16:07:05.248258"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/auth/sign_in" for 127.0.0.1 at 2024-02-15 01:07:05 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"name"=>"xfgo857qxii4tl8j4lgpnev4yh2sq", "email"=>"3_fidel_hettinger@quitzon.example", "password"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+[31mUnpermitted parameter: :name[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "3_fidel_hettinger@quitzon.example"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :name[0m
+[31mUnpermitted parameter: :name[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 295ms (Views: 0.3ms | ActiveRecord: 0.9ms | Allocations: 850)
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "4_emile.crist@fay.test"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["uid", "4_emile.crist@fay.test"], ["encrypted_password", "$2a$12$.lU1QBqarP9I5KMHmXa6q.E1BGPvjBhVPd/rhcqE4TmuQc0hvIsyO"], ["name", "b7oz"], ["email", "4_emile.crist@fay.test"], ["created_at", "2024-02-14 16:07:05.850073"], ["updated_at", "2024-02-14 16:07:05.850073"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"htbZUWVRkzO1jaLwYIjxqg\\\":{\\\"token\\\":\\\"$2a$04$17KrOJOxREsvPu9Lz1SiXOZWBnPc2wzbn3ixoQwHTxj/4OsrOeYRK\\\",\\\"expiry\\\":1709136425,\\\"updated_at\\\":\\\"2024-02-14T16:07:05Z\\\"}}\""], ["updated_at", "2024-02-14 16:07:05.853496"], ["id", 28]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+Started DELETE "/api/v1/auth/sign_out" for 127.0.0.1 at 2024-02-15 01:07:05 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "4_emile.crist@fay.test"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", nil], ["updated_at", "2024-02-14 16:07:05.868701"], ["id", 28]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 2.4ms | Allocations: 1544)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+Started DELETE "/api/v1/auth/sign_out" for 127.0.0.1 at 2024-02-15 01:07:05 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 404 Not Found in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 368)
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "1_elmer@hackett.example"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (2.2ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["uid", "1_elmer@hackett.example"], ["encrypted_password", "$2a$12$wgJetbQ.Eg/fjJDsWQpZY.4eNV3utWuAyoRKmC7mdRgf.1AAo5S1a"], ["name", "a5sg41gz44nw"], ["email", "1_elmer@hackett.example"], ["created_at", "2024-02-14 16:07:24.373185"], ["updated_at", "2024-02-14 16:07:24.373185"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/auth/sign_in" for 127.0.0.1 at 2024-02-15 01:07:24 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"name"=>"u6mcir1", "email"=>"1_elmer@hackett.example", "password"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+[31mUnpermitted parameter: :name[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "1_elmer@hackett.example"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :name[0m
+[31mUnpermitted parameter: :name[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (1.3ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 29], ["LIMIT", 1]]
+  [1m[36mUser Update (1.5ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"zAohUhY4_2656_GueyTtXA\\\":{\\\"token\\\":\\\"$2a$04$QS7iZLrN19PvONdHp4II/uyMutUc8KIfUBXr60bTzj42nB35uClYO\\\",\\\"expiry\\\":1709136444}}\""], ["updated_at", "2024-02-14 16:07:24.808909"], ["id", 29]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+Completed 200 OK in 371ms (Views: 2.2ms | ActiveRecord: 8.7ms | Allocations: 5768)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "2_louella@homenick.test"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["uid", "2_louella@homenick.test"], ["encrypted_password", "$2a$12$dewyGNYRmA4AEYUeNDPyH.VZTxnE2ZbDG9eqC6M980PqzFQUu027i"], ["name", "rp7cnoaqrx5ktptfs6ghj"], ["email", "2_louella@homenick.test"], ["created_at", "2024-02-14 16:07:25.112186"], ["updated_at", "2024-02-14 16:07:25.112186"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/auth/sign_in" for 127.0.0.1 at 2024-02-15 01:07:25 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"name"=>"jd", "email"=>"foo", "password"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+[31mUnpermitted parameter: :name[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "foo"], ["provider", "email"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 401 Unauthorized in 2ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 816)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "3_edwardo@lehner.test"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["uid", "3_edwardo@lehner.test"], ["encrypted_password", "$2a$12$7atXOEl20/mD.epjOsfaq.x/jpECwETfa2L65LwiAnqgLnrcyO5b2"], ["name", "wif97p0lb9c71w0n9f1id"], ["email", "3_edwardo@lehner.test"], ["created_at", "2024-02-14 16:07:25.426025"], ["updated_at", "2024-02-14 16:07:25.426025"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/auth/sign_in" for 127.0.0.1 at 2024-02-15 01:07:25 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"name"=>"9", "email"=>"3_edwardo@lehner.test", "password"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+[31mUnpermitted parameter: :name[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "3_edwardo@lehner.test"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :name[0m
+[31mUnpermitted parameter: :name[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 291ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 850)
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "4_maggie@trantow.example"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["uid", "4_maggie@trantow.example"], ["encrypted_password", "$2a$12$/j/1peIVgzKWB5lrbwrYiO/Y.g/.WS1hj.2Oz3aZAO6aeETSbML9S"], ["name", "91d9"], ["email", "4_maggie@trantow.example"], ["created_at", "2024-02-14 16:07:26.019521"], ["updated_at", "2024-02-14 16:07:26.019521"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"xD2XdqQQGyMIJpMqJuWDiQ\\\":{\\\"token\\\":\\\"$2a$04$V9paaGZqYaokh.2nG4m9KeuUA4wa3sdSVf8BKbxL.Vs4wjlwMEzaS\\\",\\\"expiry\\\":1709136446,\\\"updated_at\\\":\\\"2024-02-14T16:07:26Z\\\"}}\""], ["updated_at", "2024-02-14 16:07:26.023437"], ["id", 32]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+Started DELETE "/api/v1/auth/sign_out" for 127.0.0.1 at 2024-02-15 01:07:26 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "4_maggie@trantow.example"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", nil], ["updated_at", "2024-02-14 16:07:26.039986"], ["id", 32]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 1.9ms | Allocations: 1546)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+Started DELETE "/api/v1/auth/sign_out" for 127.0.0.1 at 2024-02-15 01:07:26 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 368)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
