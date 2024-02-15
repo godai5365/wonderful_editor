@@ -18,13 +18,11 @@ RSpec.describe "Api/V1::Auth::Registrations" do
       it "header 情報を取得することができる" do
         subject
         header = response.header
-        aggregate_failures do
-          expect(header["access-token"]).to be_present
-          expect(header["client"]).to be_present
-          expect(header["expiry"]).to be_present
-          expect(header["uid"]).to be_present
-          expect(header["token-type"]).to be_present
-        end
+        expect(header["access-token"]).to be_present
+        expect(header["client"]).to be_present
+        expect(header["expiry"]).to be_present
+        expect(header["uid"]).to be_present
+        expect(header["token-type"]).to be_present
       end
     end
 
