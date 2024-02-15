@@ -17,24 +17,22 @@ RSpec.describe "Api::V1::Articles" do
       # res = JSON.parse(response.body)
       res = response.parsed_body
       # binding.pry
-      aggregate_failures do
-        # httpsステータスが:ok(200)であることをテスト
-        expect(response).to have_http_status(:ok)
-        # expect(response).to have_http_status(200)は上記と同義
+      # httpsステータスが:ok(200)であることをテスト
+      expect(response).to have_http_status(:ok)
+      # expect(response).to have_http_status(200)は上記と同義
 
-        # レスポンスの長さが "3" であることをテスト
-        expect(res.length).to eq 3
+      # レスポンスの長さが "3" であることをテスト
+      expect(res.length).to eq 3
 
-        # 取得した配列のidがarticle3,article1,article2の順番であることをテスト
-        # expect(res.map {|d| d["id"] }).to eq [ccc_article3.id, aaa_article1.id, bbb_article2.id]
-        expect(res.pluck("id")).to eq [ccc_article3.id, aaa_article1.id, bbb_article2.id]
+      # 取得した配列のidがarticle3,article1,article2の順番であることをテスト
+      # expect(res.map {|d| d["id"] }).to eq [ccc_article3.id, aaa_article1.id, bbb_article2.id]
+      expect(res.pluck("id")).to eq [ccc_article3.id, aaa_article1.id, bbb_article2.id]
 
-        # articleのレスポンスのkeyがid,title,updated_at,userであることをテスト
-        expect(res[0].keys).to eq ["id", "title", "updated_at", "user"]
+      # articleのレスポンスのkeyがid,title,updated_at,userであることをテスト
+      expect(res[0].keys).to eq ["id", "title", "updated_at", "user"]
 
-        # articleのレスポンスと一生に生成されたuserのkeyがid,name,emailであることをテスト
-        expect(res[0]["user"].keys).to eq ["id", "name", "email"]
-      end
+      # articleのレスポンスと一生に生成されたuserのkeyがid,name,emailであることをテスト
+      expect(res[0]["user"].keys).to eq ["id", "name", "email"]
     end
   end
 
@@ -50,24 +48,22 @@ RSpec.describe "Api::V1::Articles" do
 
         res = response.parsed_body
 
-        aggregate_failures do
-          # httpsステータスが:ok(200)であることをテスト
-          expect(response).to have_http_status(:ok)
+        # httpsステータスが:ok(200)であることをテスト
+        expect(response).to have_http_status(:ok)
 
-          # subject で API を叩いた時点でできた article と、API のレスポンスの値が同じであることテスト
-          expect(res["id"]).to eq article.id
-          expect(res["title"]).to eq article.title
-          expect(res["body"]).to eq article.body
+        # subject で API を叩いた時点でできた article と、API のレスポンスの値が同じであることテスト
+        expect(res["id"]).to eq article.id
+        expect(res["title"]).to eq article.title
+        expect(res["body"]).to eq article.body
 
-          # be_presentはarticleにはupdated_atが存在することを期待するテスト
-          expect(res["updated_at"]).to be_present
+        # be_presentはarticleにはupdated_atが存在することを期待するテスト
+        expect(res["updated_at"]).to be_present
 
-          # subject で API を叩いた時点でできた user と、API のレスポンスの値が同じであることテスト
-          expect(res["user"]["id"]).to eq article.user.id
+        # subject で API を叩いた時点でできた user と、API のレスポンスの値が同じであることテスト
+        expect(res["user"]["id"]).to eq article.user.id
 
-          # 返ってきたユーザーのデータは、id,name,email の 3 つのデータを持つこと期待するテスト
-          expect(res["user"].keys).to eq ["id", "name", "email"]
-        end
+        # 返ってきたユーザーのデータは、id,name,email の 3 つのデータを持つこと期待するテスト
+        expect(res["user"].keys).to eq ["id", "name", "email"]
       end
     end
 
@@ -84,7 +80,7 @@ RSpec.describe "Api::V1::Articles" do
     # subject が叩かれると呼び出されると params をルーティング通りに articles_controller に渡す
     # params の値は let(:params){ {article: attributes_for(:article)} } で生成される
     # 渡す時に article という key に値を渡さないといけない
-    subject { post(api_v1_articles_path, params: params) }
+    subject { post(api_v1_articles_path, params: params, headers: headers) }
 
     context "適切なパラメータを送信した場合" do
       let(:params) { { article: attributes_for(:article) } }
@@ -98,26 +94,26 @@ RSpec.describe "Api::V1::Articles" do
       # 後ろの current_user が呼び出されたら let(:current_user) { create(:user) } が呼び出され create される
       # 今回は before が使われているので it が走る前に処理が行われる
       # before { allow_any_instance_of(Api::V1::BaseApiController).to receive(:current_user).and_return(current_user) }
-      before do
-        current_user_mock = instance_double(Api::V1::BaseApiController)
-        allow(current_user_mock).to receive(:current_user).and_return(current_user)
-      end
+      # before do
+      #   current_user_mock = instance_double(Api::V1::BaseApiController)
+      #   allow(current_user_mock).to receive(:current_user).and_return(current_user)
+      # end
+
+      let(:headers) { current_user.create_new_auth_token } # 2/15 追記
 
       it "記事のレコードが作成できる" do
-        aggregate_failures do
-          # API を叩いた後の Article の current_user の数が1個にかわったことをテスト
-          # Article と current_userの紐づけが出来ていることと user_id が current_user の id になっていることを意味している
-          expect { subject }.to change { Article.where(user_id: current_user.id).count }.by(1)
-          res = response.parsed_body
-          # res = JSON.parse(response.body)
+        # API を叩いた後の Article の current_user の数が1個にかわったことをテスト
+        # Article と current_userの紐づけが出来ていることと user_id が current_user の id になっていることを意味している
+        expect { subject }.to change { Article.where(user_id: current_user.id).count }.by(1)
+        res = response.parsed_body
+        # res = JSON.parse(response.body)
 
-          # パラメータを送信した直後とレスポンスの整合を確認するテスト
-          expect(res["title"]).to eq params[:article][:title]
-          expect(res["body"]).to eq params[:article][:body]
+        # パラメータを送信した直後とレスポンスの整合を確認するテスト
+        expect(res["title"]).to eq params[:article][:title]
+        expect(res["body"]).to eq params[:article][:body]
 
-          # httpsステータスが:ok(200)であることをテスト
-          expect(response).to have_http_status(:ok)
-        end
+        # httpsステータスが:ok(200)であることをテスト
+        expect(response).to have_http_status(:ok)
       end
     end
 
@@ -125,10 +121,11 @@ RSpec.describe "Api::V1::Articles" do
       let(:params) { attributes_for(:article) }
       let(:current_user) { create(:user) }
       # before { allow_any_instance_of(Api::V1::BaseApiController).to receive(:current_user).and_return(current_user) }
-      before do
-        current_user_mock = instance_double(Api::V1::BaseApiController)
-        allow(current_user_mock).to receive(:current_user).and_return(current_user)
-      end
+      # before do
+      #   current_user_mock = instance_double(Api::V1::BaseApiController)
+      #   allow(current_user_mock).to receive(:current_user).and_return(current_user)
+      # end
+      let(:headers) { current_user.create_new_auth_token } # 2/15 追記
 
       it "エラーする" do
         expect { subject }.to raise_error(ActionController::ParameterMissing)
@@ -137,11 +134,12 @@ RSpec.describe "Api::V1::Articles" do
   end
 
   describe "PATCH /articles/:id" do
-    subject { patch(api_v1_article_path(article.id), params: params) }
+    subject { patch(api_v1_article_path(article.id), params: params, headers: headers) }
 
     let(:params) { { article: attributes_for(:article) } }
     let(:current_user) { create(:user) }
-    before { allow_any_instance_of(Api::V1::BaseApiController).to receive(:current_user).and_return(current_user) }
+    # before { allow_any_instance_of(Api::V1::BaseApiController).to receive(:current_user).and_return(current_user) }
+    let(:headers) { current_user.create_new_auth_token } # 2/15 追記
 
     context "ログインユーザーが自身の記事を更新しようとする場合" do
       let(:article) { create(:article, user: current_user) }
@@ -163,10 +161,11 @@ RSpec.describe "Api::V1::Articles" do
   end
 
   describe "DELETE /articles/:id" do
-    subject { delete(api_v1_article_path(article.id)) }
+    subject { delete(api_v1_article_path(article.id), headers: headers) }
 
     let(:current_user) { create(:user) }
-    before { allow_any_instance_of(Api::V1::BaseApiController).to receive(:current_user).and_return(current_user) }
+    # before { allow_any_instance_of(Api::V1::BaseApiController).to receive(:current_user).and_return(current_user) }
+    let(:headers) { current_user.create_new_auth_token } # 2/15 追記
 
     context "ログインユーザーが自身の記事を削除しようとする場合" do
       let!(:article) { create(:article, user: current_user) }
