@@ -4,6 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  body       :text
+#  status     :string           default("draft")
 #  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -21,11 +22,28 @@ require "rails_helper"
 
 RSpec.describe Article do
   describe "正常系" do
-    context "タイトルと本文が入力されている" do
+    context "タイトルと本文が入力されている場合" do
       let(:article) { build(:article) }
 
-      it "記事が作成できる" do
+      it "下書き状態の記事が作成できる" do
         expect(article).to be_valid
+        expect(article.status).to eq "draft"
+      end
+    end
+
+    context "status が下書き状態の場合" do
+      let(:article) { build(:article, :draft) }
+      it "記事を下書き状態で作成できる" do
+        expect(article).to be_valid
+        expect(article.status).to eq "draft"
+      end
+    end
+
+    context "status が公開状態の場合" do
+      let(:article) { build(:article, :published) }
+      it "記事を公開状態で作成できる" do
+        expect(article).to be_valid
+        expect(article.status).to eq "published"
       end
     end
   end
