@@ -12,7 +12,7 @@ RSpec/AnyInstance:
 # パフォーマンスの問題さえ無ければ 1 example 1 assertion にしておく方が
 # 読みやすいテストになりやすいので、そこはレビューで担保していく必要がある。
 RSpec/MultipleExpectations:
-  Max: 4
+  Max: 8 # 2/15 追記
 
 # 日本語だと「〜の場合」になるので suffix でないと対応できない
 RSpec/ContextWording:
