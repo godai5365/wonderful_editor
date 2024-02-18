@@ -15,3 +15,9 @@ RSpec/ExampleLength:
   Enabled: true
   Max: 20 # default: 5
   CountAsOne: ["array", "hash", "heredoc"]
+
+  # letの定義回数の上限
+RSpec/MultipleMemoizedHelpers:
+  Enabled: true
+  Max: 8 # default: 5
+  AllowSubject: false # subjectも数に含める
