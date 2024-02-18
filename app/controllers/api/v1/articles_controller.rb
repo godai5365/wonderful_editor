@@ -4,12 +4,12 @@ module Api::V1
     before_action :authenticate_user!, only: [:create, :update, :destroy] # 2/15 追記
 
     def index
-      articles = Article.order(updated_at: :desc)
+      articles = Article.published.order(updated_at: :desc)
       render json: articles, each_serializer: Api::V1::ArticlePreviewSerializer
     end
 
     def show
-      article = Article.find(params[:id])
+      article = Article.published.find(params[:id])
       render json: article, each_serializer: Api::V1::ArticleSerializer
     end
 
@@ -38,7 +38,7 @@ module Api::V1
       # .requireメソッドがデータのオブジェクト名を定め
       # .permitメソッドで変更を加えられる（保存の処理ができる）キーを指定
       def article_params
-        params.require(:article).permit(:title, :body)
+        params.require(:article).permit(:title, :body, :status)
       end
   end
 end

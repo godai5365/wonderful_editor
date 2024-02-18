@@ -29,11 +29,11 @@ FactoryBot.define do
     user
 
     trait :draft do
-      status { :draft }
+      status { "draft" }
     end
 
     trait :published do
-      status { :published }
+      status { "published" }
     end
   end
 end
