@@ -15,6 +15,9 @@ Rails.application.routes.draw do
       namespace :articles do # 2/18 追記
         resources :drafts, only: [:index, :show]
       end
+      namespace :current do # 2/18 追記
+        resources :articles, only: [:index]
+      end
       resources :articles
     end
   end
