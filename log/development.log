@@ -3133,3 +3133,107 @@ FOREIGN KEY ("user_id")
   [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
   [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2024-02-19 11:07:10 +0900
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1557)
+  Rendered layout layouts/application.html.erb (Duration: 14.8ms | Allocations: 5914)
+Completed 200 OK in 23ms (Views: 18.1ms | ActiveRecord: 0.0ms | Allocations: 9162)
+
+
+Started GET "/favicon.ico" for ::1 at 2024-02-19 11:07:10 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/" for ::1 at 2024-02-19 11:07:41 +0900
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1090)
+  Rendered layout layouts/application.html.erb (Duration: 13.0ms | Allocations: 3367)
+Completed 200 OK in 15ms (Views: 13.9ms | ActiveRecord: 0.0ms | Allocations: 3751)
+
+
+Started GET "/sign_in" for ::1 at 2024-02-19 11:07:54 +0900
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1031)
+  Rendered layout layouts/application.html.erb (Duration: 11.0ms | Allocations: 3207)
+Completed 200 OK in 12ms (Views: 11.7ms | ActiveRecord: 0.0ms | Allocations: 3516)
+
+
+Started GET "/sign_up" for ::1 at 2024-02-19 11:09:30 +0900
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1031)
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | Allocations: 3207)
+Completed 200 OK in 17ms (Views: 14.5ms | ActiveRecord: 0.0ms | Allocations: 3516)
+
+
+Started GET "/sign_up" for ::1 at 2024-02-19 11:26:19 +0900
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 5.5ms | Allocations: 1031)
+  Rendered layout layouts/application.html.erb (Duration: 13.6ms | Allocations: 3206)
+Completed 200 OK in 26ms (Views: 22.7ms | Allocations: 3507)
+
+
+Started GET "/sign_up" for ::1 at 2024-02-19 11:26:22 +0900
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1031)
+  Rendered layout layouts/application.html.erb (Duration: 10.6ms | Allocations: 3206)
+Completed 200 OK in 12ms (Views: 11.3ms | Allocations: 3507)
+
+
+Started GET "/sign_up" for ::1 at 2024-02-19 11:29:06 +0900
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.6ms | Allocations: 1031)
+  Rendered layout layouts/application.html.erb (Duration: 18.2ms | Allocations: 3207)
+Completed 200 OK in 33ms (Views: 21.3ms | Allocations: 3513)
+
+
+Started GET "/sign_up" for ::1 at 2024-02-19 11:29:08 +0900
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1031)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 3206)
+Completed 200 OK in 12ms (Views: 11.4ms | Allocations: 3507)
+
+
+Started GET "/" for ::1 at 2024-02-19 11:29:12 +0900
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 7.8ms | Allocations: 1031)
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | Allocations: 3206)
+Completed 200 OK in 18ms (Views: 17.8ms | Allocations: 3507)
+
+
+Started GET "/" for ::1 at 2024-02-19 11:29:13 +0900
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1031)
+  Rendered layout layouts/application.html.erb (Duration: 9.7ms | Allocations: 3206)
+Completed 200 OK in 12ms (Views: 11.4ms | Allocations: 3507)
+
+
+Started GET "/" for ::1 at 2024-02-19 11:29:16 +0900
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1031)
+  Rendered layout layouts/application.html.erb (Duration: 9.4ms | Allocations: 3206)
+Completed 200 OK in 12ms (Views: 10.8ms | Allocations: 3507)
+
+
